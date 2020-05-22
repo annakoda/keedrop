@@ -3,11 +3,11 @@
 function defaultAdapter(baseUrl) {
   function request(url, data, callback) {
     var req = new XMLHttpRequest();
-    req.open(data ? "POST" : "GET", "https://cors-anywhere.herokuapp.com/" + url);
+    req.open(data ? "POST" : "GET", url);
     req.onreadystatechange = function() {
       if (4 === req.readyState) {
         if (req.status < 200 || req.status >= 400) {
-          callback(new Error("Could not send encrypted data to server"), "")
+          callback(new Error("Could not send encrypted data to server"), "");
         } else {
           callback(undefined, JSON.parse(req.responseText));
         }
